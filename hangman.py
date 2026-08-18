@@ -1,15 +1,7 @@
 import random
-
-# List of predefined words
 words = ["python", "programming", "computer", "developer", "software"]
-
-# Select a random word
 word = random.choice(words)
-
-# Store correctly guessed letters
 guessed_letters = set()
-
-# Number of incorrect guesses allowed
 max_attempts = 6
 incorrect_attempts = 0
 
@@ -21,8 +13,6 @@ print("Guess the word one letter at a time.")
 print(f"You have {max_attempts} incorrect guesses.")
 
 while incorrect_attempts < max_attempts:
-
-    # Display the current state of the word
     display_word = ""
 
     for letter in word:
@@ -34,29 +24,24 @@ while incorrect_attempts < max_attempts:
     print("\nWord:", display_word)
     print("Incorrect guesses:", incorrect_attempts, "/", max_attempts)
 
-    # Check whether the player has guessed the entire word
     if all(letter in guessed_letters for letter in word):
         print("\nCongratulations!")
         print("You guessed the word:", word)
         break
 
-    # Take input from user
     guess = input("Enter a letter: ").lower().strip()
 
-    # Validate input
     if len(guess) != 1 or not guess.isalpha():
         print("Please enter exactly one letter.")
         continue
 
-    # Check whether the letter was already guessed
     if guess in guessed_letters:
         print("You already guessed that letter.")
         continue
 
-    # Add the guess to the guessed letters
     guessed_letters.add(guess)
 
-    # Check the guess
+   
     if guess in word:
         print("Correct guess!")
     else:
